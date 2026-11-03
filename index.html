@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Рабочий лист: 1-й и 2-й законы термодинамики (8 класс)</title>
+  <style>
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #1e293b;
+      --muted: #64748b;
+      --border: #e2e8f0;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      padding: 24px 16px;
+    }
+
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    header {
+      background: var(--card-bg);
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 24px;
+      border: 1px solid var(--border);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+
+    header h1 {
+      font-size: 1.5rem;
+      margin-bottom: 8px;
+      color: var(--primary);
+    }
+
+    .student-info {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 16px;
+      margin-top: 16px;
+    }
+
+    .input-group label {
+      display: block;
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+
+    .input-group input {
+      width: 100%;
+      padding: 8px 12px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      font-size: 0.95rem;
+    }
+
+    .section-card {
+      background: var(--card-bg);
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 24px;
+      border: 1px solid var(--border);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+
+    .section-title {
+      font-size: 1.25rem;
+      color: #0f172a;
+      border-bottom: 2px solid var(--primary);
+      padding-bottom: 8px;
+      margin-bottom: 20px;
+    }
+
+    .task-block {
+      margin-bottom: 20px;
+      padding-bottom: 16px;
+      border-bottom: 1px dashed var(--border);
+    }
+
+    .task-block:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .task-title {
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: #334155;
+    }
+
+    .task-desc {
+      font-size: 0.95rem;
+      margin-bottom: 12px;
+    }
+
+    .text-input, textarea {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      font-size: 0.95rem;
+      background: #fafafa;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 70px;
+    }
+
+    .formula-badge {
+      display: inline-block;
+      background: #eff6ff;
+      color: var(--primary-dark);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-family: "Courier New", Courier, monospace;
+      font-weight: bold;
+    }
+
+    .btn-container {
+      display: flex;
+      justify-content: flex-end;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .btn {
+      padding: 10px 20px;
+      border-radius: 8px;
+      border: none;
+      font-weight: 600;
+      cursor: pointer;
+      font-size: 0.95rem;
+      transition: background 0.2s;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-dark);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text);
+    }
+
+    .btn-outline:hover {
+      background: #f1f5f9;
+    }
+
+    @media (max-width: 640px) {
+      .student-info {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media print {
+      body {
+        background: white;
+        padding: 0;
+      }
+      .btn-container {
+        display: none;
+      }
+      .section-card, header {
+        box-shadow: none;
+        border: 1px solid #ccc;
+        page-break-inside: avoid;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <form id="worksheetForm">
+    <header>
+      <h1>Рабочий лист: 1-й и 2-й законы термодинамики</h1>
+      <p style="color: var(--muted); font-size: 0.9rem;">Физика, 8 класс (по учебнику Б.А. Кронгарт)</p>
+      
+      <div class="student-info">
+        <div class="input-group">
+          <label>ФИО учащегося</label>
+          <input type="text" name="student_name" placeholder="Иванов Иван" required>
+        </div>
+        <div class="input-group">
+          <label>Класс</label>
+          <input type="text" name="student_class" placeholder="8 «Б»" required>
+        </div>
+        <div class="input-group">
+          <label>Дата</label>
+          <input type="date" name="worksheet_date" required>
+        </div>
+      </div>
+    </header>
+
+    <!-- РАЗДЕЛ 1 -->
+    <div class="section-card">
+      <h2 class="section-title">Раздел 1. Первый закон термодинамики</h2>
+      
+      <div class="task-block">
+        <div class="task-title">Задание 1.1. Закон сохранения в тепловых процессах</div>
+        <div class="task-desc">
+          Газу передали количество теплоты <span class="formula-badge">Q = 800 Дж</span>. При этом газ расширился и совершил работу <span class="formula-badge">A = 320 Дж</span>. Чему равно изменение внутренней энергии газа?
+        </div>
+        <input type="text" name="task_1_1" class="text-input" placeholder="Запиши решение и численный ответ...">
+      </div>
+
+      <div class="task-block">
+        <div class="task-title">Задание 1.2. Сжатие внешними силами</div>
+        <div class="task-desc">
+          В цилиндре под поршнем газ сжимают внешние силы, совершая над ним работу <span class="formula-badge">A' = 450 Дж</span>. При этом газ отдает стенкам сосуда количество теплоты <span class="formula-badge">Q = 180 Дж</span>. На сколько изменилась внутренняя энергия газа?
+        </div>
+        <input type="text" name="task_1_2" class="text-input" placeholder="Запиши решение и численный ответ...">
+      </div>
+
+      <div class="task-block">
+        <div class="task-title">Задание 1.3. Изохорный процесс</div>
+        <div class="task-desc">
+          В закрытом герметичном баллоне постоянного объема (<span class="formula-badge">V = const</span>) находится неон. Газу передали количество теплоты <span class="formula-badge">500 Дж</span>. Какую работу совершил газ и как изменилась его внутренняя энергия?
+        </div>
+        <textarea name="task_1_3" placeholder="Объясни и рассчитай значение работы и изменения энергии..."></textarea>
+      </div>
+
+      <div class="task-block">
+        <div class="task-title">Задание 1.4. Изотермический процесс</div>
+        <div class="task-desc">
+          Газ находится при постоянной температуре (<span class="formula-badge">T = const</span>) и медленно расширяется, совершая работу <span class="formula-badge">A = 620 Дж</span>. Какое количество теплоты получил газ в этом процессе?
+        </div>
+        <input type="text" name="task_1_4" class="text-input" placeholder="Запиши ответ с обоснованием...">
+      </div>
+
+      <div class="task-block">
+        <div class="task-title">Задание 1.5. Адиабатное расширение</div>
+        <div class="task-desc">
+          Газ в теплоизолированном сосуде (<span class="formula-badge">Q = 0</span>) расширяется и толкает поршень, совершая работу <span class="formula-badge">A = 390 Дж</span>. Как изменилась внутренняя энергия газа и что произошло с его температурой?
+        </div>
+        <textarea name="task_1_5" placeholder="Запиши изменение внутренней энергии и вывод о температуре..."></textarea>
+      </div>
+
+      <div class="task-block">
+        <div class="task-title">Задание 1.6. Охлаждение при изохорном процессе</div>
+        <div class="task-desc">
+          Неподвижный объем идеального газа охладили, при этом его внутренняя энергия уменьшилась на <span class="formula-badge">750 Дж</span>. Определи количество теплоты, отданное газом окружающим телам.
+        </div>
+        <input type="text" name="task_1_6" class="text-input" placeholder="Запиши численный ответ с единицами измерения...">
+      </div>
+    </div>
+
+    <!-- РАЗДЕЛ 2 -->
+    <div class="section-card">
+      <h2 class="section-title">Раздел 2. Второй закон термодинамики и тепловые двигатели</h2>
+
+      <div class="task-block">
+        <div class="task-title">Задание 2.1. Расчет полезной работы цикла</div>
+        <div class="task-desc">
+          Тепловой двигатель за рабочий цикл получает от нагревателя количество теплоты <span class="formula-badge">Q₁ = 1500 Дж</span>, а холодильнику передает <span class="formula-badge">Q₂ = 900 Дж</span>. Определи полезную механическую работу двигателя за один цикл.
+        </div>
+        <input type="text" name="task_2_1" class="text-input" placeholder="Запиши решение и численный ответ...">
+      </div>
+
+      <div class="task-block">
+        <div class="task-title">Задание 2.2. Определение КПД двигателя</div>
+        <div class="task-desc">
+          Двигатель внутреннего сгорания получил от сгорания топлива количество теплоты <span class="formula-badge">Q₁ = 50 кДж</span> и совершил полезную работу <span class="formula-badge">A = 14 кДж</span>. Найди коэффициент полезного действия (КПД) машины в процентах.
+        </div>
+        <input type="text" name="task_2_2" class="text-input" placeholder="Запиши расчет КПД...">
+      </div>
+
+      <div class="task-block">
+        <div class="task-title">Задание 2.3. Потери тепла на холодильнике</div>
+        <div class="task-desc">
+          Тепловая машина с КПД <span class="formula-badge">&eta; = 30%</span> за один цикл получила от нагревателя количество теплоты <span class="formula-badge">2000 Дж</span>. Какое количество теплоты передано холодильнику?
+        </div>
+        <input type="text" name="task_2_3" class="text-input" placeholder="Запиши решение и численный ответ...">
+      </div>
+
+      <div class="task-block">
+        <div class="task-title">Задание 2.4. Работа по известному КПД</div>
+        <div class="task-desc">
+          КПД теплового двигателя равен <span class="formula-badge">24%</span>. Какую полезную работу совершит двигатель, если при полном сгорании топлива выделится <span class="formula-badge">8000 Дж</span> энергии?
+        </div>
+        <input type="text" name="task_2_4" class="text-input" placeholder="Запиши решение и численный ответ...">
+      </div>
+
+      <div class="task-block">
+        <div class="task-title">Задание 2.5. Направленность процессов в природе</div>
+        <div class="task-desc">
+          Возможен ли в природе самопроизвольный процесс передачи тепла от кубика льда к горячей воде в стакане без внешних воздействий? Сформулируй краткое обоснование на основе второго закона термодинамики.
+        </div>
+        <textarea name="task_2_5" placeholder="Краткое обоснование..."></textarea>
+      </div>
+
+      <div class="task-block">
+        <div class="task-title">Задание 2.6. Ограничение на вечный двигатель второго рода</div>
+        <div class="task-desc">
+          Изобретатель утверждает, что создал циклическую тепловую машину, которая полностью превращает всё полученное тепло в механическую работу, не отдавая ни одного джоуля тепла холодильнику. Какой закон термодинамики нарушает эта машина и почему ее создание невозможно?
+        </div>
+        <textarea name="task_2_6" placeholder="Краткое обоснование..."></textarea>
+      </div>
+    </div>
+
+    <div class="btn-container">
+      <button type="button" class="btn btn-outline" onclick="window.print()">Распечатать лист</button>
+      <button type="button" class="btn btn-primary" onclick="exportAnswersJSON()">Выгрузить данные (JSON)</button>
+    </div>
+  </form>
+</div>
+
+<script>
+  function exportAnswersJSON() {
+    const form = document.getElementById('worksheetForm');
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData.entries());
+    
+    // Скачивание заполненного JSON для учителя или ученика
+    const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `worksheet_${data.student_name || 'student'}.json`;
+    a.click();
+    URL.revokeObjectURL(url);
+  }
+</script>
+
+</body>
+</html>
